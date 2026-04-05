@@ -2,7 +2,7 @@
 
 A futuristic, responsive personal portfolio website built with vanilla HTML, CSS, and JavaScript. Deployed on Vercel.
 
-🌐 **Live Site:** [https://jaichadhavercelapp-git-main-chatbot-project.vercel.app/]
+🌐 **Live Site:** [https://jaichadhaportfolio.vercel.app/]
 
 ---
 
@@ -137,7 +137,7 @@ B.Tech CSE (IoT & Intelligent Systems) — Manipal University Jaipur
 CGPA: 8.95
 
 - 📧 jaichadha04@gmail.com
-- 💼 [LinkedIn](https://www.linkedin.com/in/jaichadha-870407273)
+- 💼 [LinkedIn](https://www.linkedin.com/in/jai-chadha-870407273/)
 - 🐙 [GitHub](https://github.com/Jai1203)
 
 ---
