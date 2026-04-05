@@ -1,22 +1,34 @@
 // ── FOOTER YEAR (auto-updates) ──
 document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-// ── SPLASH — dismiss after 1.8s regardless of load state ──
+// ── SPLASH — bulletproof dismiss ──
 function dismissSplash() {
-  setTimeout(() => {
-    const splash = document.getElementById('splash');
-    if (splash) splash.classList.add('out');
-  }, 1800);
+  const splash = document.getElementById('splash');
+  if (!splash) return;
+  splash.classList.add('out');
+  // After transition ends, remove from DOM entirely so it never blocks anything
+  setTimeout(() => { splash.style.display = 'none'; }, 800);
 }
-if (document.readyState === 'complete') {
-  dismissSplash();
-} else {
-  window.addEventListener('load', dismissSplash);
-  setTimeout(() => {
-    const splash = document.getElementById('splash');
-    if (splash) splash.classList.add('out');
-  }, 3000);
-}
+// Dismiss at 1.8s no matter what
+setTimeout(dismissSplash, 1800);
+// Hard failsafe at 3s
+setTimeout(dismissSplash, 3000);
+
+// ── FORCE HERO VISIBLE — safety net for slow mobile connections ──
+setTimeout(() => {
+  const heroEls = document.querySelectorAll(
+    '.hero-tag, .hero-name, .hero-role, .hero-summary, .hero-ctas, .hero-stats'
+  );
+  heroEls.forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+    el.style.animation = 'none';
+  });
+  // Also force all reveals visible
+  document.querySelectorAll('.reveal').forEach(el => {
+    el.classList.add('visible');
+  });
+}, 3500);
 
 // ── CANVAS BACKGROUND ──
 (function () {
@@ -123,7 +135,7 @@ const observer = new IntersectionObserver((entries) => {
       setTimeout(() => e.target.classList.add('visible'), i * 60);
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.05, rootMargin: "0px 0px -20px 0px" });
 reveals.forEach(el => observer.observe(el));
 
 // ── SCROLL SPY ──

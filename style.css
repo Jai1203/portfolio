@@ -240,7 +240,7 @@ section {
   color: var(--accent3);
   letter-spacing: 0.05em;
   margin-bottom: 1.5rem;
-  animation: fadeUp 0.8s 1.9s ease both;
+  animation: fadeUp 0.8s 1.9s ease forwards; opacity: 0;
 }
 .hero-tag::before {
   content: '';
@@ -257,7 +257,7 @@ section {
   letter-spacing: -0.04em;
   line-height: 0.95;
   margin-bottom: 1rem;
-  animation: fadeUp 0.8s 2.0s ease both;
+  animation: fadeUp 0.8s 2.0s ease forwards; opacity: 0;
 }
 .hero-name span {
   background: linear-gradient(135deg, var(--accent2) 0%, var(--teal2) 60%, var(--teal) 100%);
@@ -270,7 +270,7 @@ section {
   color: var(--text2);
   font-weight: 300;
   margin-bottom: 1.5rem;
-  animation: fadeUp 0.8s 2.1s ease both;
+  animation: fadeUp 0.8s 2.1s ease forwards; opacity: 0;
 }
 .hero-summary {
   font-size: 1.05rem;
@@ -278,11 +278,11 @@ section {
   max-width: 560px;
   line-height: 1.8;
   margin-bottom: 2.5rem;
-  animation: fadeUp 0.8s 2.2s ease both;
+  animation: fadeUp 0.8s 2.2s ease forwards; opacity: 0;
 }
 .hero-ctas {
   display: flex; flex-wrap: wrap; gap: 1rem;
-  animation: fadeUp 0.8s 2.3s ease both;
+  animation: fadeUp 0.8s 2.3s ease forwards; opacity: 0;
 }
 .btn-primary {
   display: inline-flex; align-items: center; gap: 0.5rem;
@@ -321,7 +321,7 @@ section {
   margin-top: 4rem;
   padding-top: 2rem;
   border-top: 1px solid var(--border);
-  animation: fadeUp 0.8s 2.4s ease both;
+  animation: fadeUp 0.8s 2.4s ease forwards; opacity: 0;
 }
 .stat-num {
   font-family: 'Syne', sans-serif;
@@ -821,4 +821,12 @@ footer {
 }
 .achievement-card--gold:hover {
   box-shadow: 0 0 30px rgba(245,158,11,0.15) !important;
+}
+
+/* ── MOBILE SAFETY: force visibility after animations ── */
+@media (max-width: 768px) {
+  .hero-tag, .hero-name, .hero-role, .hero-summary, .hero-ctas, .hero-stats {
+    animation-duration: 0.5s !important;
+    animation-delay: 0.1s !important;
+  }
 }
