@@ -2,7 +2,7 @@
 
 A futuristic, responsive personal portfolio website built with vanilla HTML, CSS, and JavaScript. Deployed on Vercel.
 
-🌐 **Live Site:** [your-portfolio.vercel.app](https://your-portfolio.vercel.app)
+🌐 **Live Site:** [https://jaichadhavercelapp-git-main-chatbot-project.vercel.app/]
 
 ---
 
