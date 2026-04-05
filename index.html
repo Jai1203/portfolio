@@ -6,6 +6,67 @@
 <title>Jai Chadha — Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+/* ── CRITICAL INLINE: splash (always loads even if style.css is cached) ── */
+#splash {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #0d0d1a;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 1.8rem;
+}
+#splash.splash-fading { animation: splashOut 0.5s ease forwards; }
+#splash.splash-gone   { display: none !important; }
+.splash-monogram {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: clamp(3.5rem, 14vw, 6rem); letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #a78bfa 0%, #5eead4 60%, #2dd4bf 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  animation: jcPop 0.7s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.splash-bar-wrap {
+  width: min(220px, 55vw); height: 2px;
+  background: #2e2e50; border-radius: 2px; overflow: hidden;
+}
+.splash-bar {
+  height: 100%; width: 0%; border-radius: 2px;
+  background: linear-gradient(90deg, #7c6af7, #2dd4bf);
+  animation: barFill 2.2s cubic-bezier(0.4,0,0.2,1) forwards 0.2s;
+}
+.splash-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: #7878a0;
+  animation: jcPop 0.5s ease both 0.15s;
+}
+@keyframes jcPop   { from{opacity:0;transform:scale(0.75) translateY(8px)} to{opacity:1;transform:none} }
+@keyframes barFill { from{width:0%} to{width:100%} }
+@keyframes splashOut { from{opacity:1} to{opacity:0} }
+@media (prefers-reduced-motion: reduce) { #splash { display: none !important; } }
+</style>
+<script>
+
+// Run ASAP — hide splash after load bar finishes
+(function() {
+  function hideSplash() {
+    var s = document.getElementById('splash');
+    if (!s) return;
+    s.classList.add('splash-fading');
+    setTimeout(function() { s.classList.add('splash-gone'); }, 550);
+  }
+  // Primary: hide at 2.8s (bar fills in ~2.4s)
+  var t = setTimeout(hideSplash, 2800);
+  // Fallback: if window already loaded faster, clear and run immediately after DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', function() {
+    clearTimeout(t);
+    t = setTimeout(hideSplash, 2800);
+  });
+  // Emergency fallback: always gone by 4s
+  setTimeout(function() {
+    var s = document.getElementById('splash');
+    if (s) { s.classList.add('splash-gone'); }
+  }, 4000);
+})();
+</script>
 </head>
 <body>
 

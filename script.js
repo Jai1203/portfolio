@@ -1,11 +1,3 @@
-// ── SPLASH SCREEN ──
-(function() {
-  var splash = document.getElementById('splash');
-  if (splash) {
-    setTimeout(function() { splash.classList.add('hidden'); }, 3100);
-  }
-})();
-
 // ── FOOTER YEAR ──
 document.getElementById('footer-year').textContent = new Date().getFullYear();
 
