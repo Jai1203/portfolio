@@ -1,34 +1,40 @@
-// ── FOOTER YEAR (auto-updates) ──
+// ── FOOTER YEAR ──
 document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-// ── SPLASH — bulletproof dismiss ──
+// ── FORCE EVERYTHING VISIBLE IMMEDIATELY ──
+// This runs before anything else - ensures no element stays hidden
+(function forceVisible() {
+  var style = document.createElement('style');
+  style.id = 'force-visible';
+  style.textContent = [
+    '.hero-tag,.hero-name,.hero-role,.hero-summary,.hero-ctas,.hero-stats{',
+    '  opacity:1!important;transform:none!important;animation:none!important;}',
+    '.reveal{opacity:1!important;transform:none!important;}'
+  ].join('');
+  document.head.appendChild(style);
+
+  // Remove the override after 3s so scroll animations can work
+  setTimeout(function() {
+    var el = document.getElementById('force-visible');
+    if (el) el.remove();
+    // Re-init scroll reveals
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      el.style.opacity = '';
+      el.style.transform = '';
+    });
+    initReveal();
+  }, 3000);
+})();
+
+// ── SPLASH ──
 function dismissSplash() {
-  const splash = document.getElementById('splash');
+  var splash = document.getElementById('splash');
   if (!splash) return;
   splash.classList.add('out');
-  // After transition ends, remove from DOM entirely so it never blocks anything
-  setTimeout(() => { splash.style.display = 'none'; }, 800);
+  setTimeout(function() { splash.style.display = 'none'; }, 800);
 }
-// Dismiss at 1.8s no matter what
 setTimeout(dismissSplash, 1800);
-// Hard failsafe at 3s
 setTimeout(dismissSplash, 3000);
-
-// ── FORCE HERO VISIBLE — safety net for slow mobile connections ──
-setTimeout(() => {
-  const heroEls = document.querySelectorAll(
-    '.hero-tag, .hero-name, .hero-role, .hero-summary, .hero-ctas, .hero-stats'
-  );
-  heroEls.forEach(el => {
-    el.style.opacity = '1';
-    el.style.transform = 'none';
-    el.style.animation = 'none';
-  });
-  // Also force all reveals visible
-  document.querySelectorAll('.reveal').forEach(el => {
-    el.classList.add('visible');
-  });
-}, 3500);
 
 // ── CANVAS BACKGROUND ──
 (function () {
@@ -127,16 +133,7 @@ window.addEventListener('scroll', () => {
   progressEl.style.width = scrolled + '%';
 });
 
-// ── REVEAL ON SCROLL ──
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 60);
-    }
-  });
-}, { threshold: 0.05, rootMargin: "0px 0px -20px 0px" });
-reveals.forEach(el => observer.observe(el));
+// reveal handled by initReveal() above
 
 // ── SCROLL SPY ──
 const spySections = ['hero', 'experience', 'projects', 'skills', 'education', 'publications', 'contact'];
@@ -194,6 +191,22 @@ function downloadResume() {
   a.href = 'Jai_Chadha_Resume.pdf';
   a.download = 'Jai_Chadha_Resume.pdf';
   a.click();
+}
+
+
+// ── SCROLL REVEAL (called after force-visible removed) ──
+function initReveal() {
+  var reveals = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    reveals.forEach(function(el) { el.classList.add('visible'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -10px 0px' });
+  reveals.forEach(function(el) { obs.observe(el); });
 }
 
 // ── PHOTO CAROUSEL (3D flip, auto-advances every 35s) ──
