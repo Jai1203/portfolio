@@ -6,74 +6,15 @@
 <title>Jai Chadha — Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<style>
-/* ── CRITICAL INLINE: splash (always loads even if style.css is cached) ── */
-#splash {
-  position: fixed; inset: 0; z-index: 9999;
-  background: #0d0d1a;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 1.8rem;
-}
-#splash.splash-fading { animation: splashOut 0.5s ease forwards; }
-#splash.splash-gone   { display: none !important; }
-.splash-monogram {
-  font-family: 'Syne', sans-serif; font-weight: 800;
-  font-size: clamp(3.5rem, 14vw, 6rem); letter-spacing: -0.04em;
-  background: linear-gradient(135deg, #a78bfa 0%, #5eead4 60%, #2dd4bf 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  animation: jcPop 0.7s cubic-bezier(0.34,1.56,0.64,1) both;
-}
-.splash-bar-wrap {
-  width: min(220px, 55vw); height: 2px;
-  background: #2e2e50; border-radius: 2px; overflow: hidden;
-}
-.splash-bar {
-  height: 100%; width: 0%; border-radius: 2px;
-  background: linear-gradient(90deg, #7c6af7, #2dd4bf);
-  animation: barFill 2.2s cubic-bezier(0.4,0,0.2,1) forwards 0.2s;
-}
-.splash-text {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.72rem; letter-spacing: 0.2em;
-  text-transform: uppercase; color: #7878a0;
-  animation: jcPop 0.5s ease both 0.15s;
-}
-@keyframes jcPop   { from{opacity:0;transform:scale(0.75) translateY(8px)} to{opacity:1;transform:none} }
-@keyframes barFill { from{width:0%} to{width:100%} }
-@keyframes splashOut { from{opacity:1} to{opacity:0} }
-@media (prefers-reduced-motion: reduce) { #splash { display: none !important; } }
-</style>
-<script>
-
-// Run ASAP — hide splash after load bar finishes
-(function() {
-  function hideSplash() {
-    var s = document.getElementById('splash');
-    if (!s) return;
-    s.classList.add('splash-fading');
-    setTimeout(function() { s.classList.add('splash-gone'); }, 550);
-  }
-  // Primary: hide at 2.8s (bar fills in ~2.4s)
-  var t = setTimeout(hideSplash, 2800);
-  // Fallback: if window already loaded faster, clear and run immediately after DOMContentLoaded
-  document.addEventListener('DOMContentLoaded', function() {
-    clearTimeout(t);
-    t = setTimeout(hideSplash, 2800);
-  });
-  // Emergency fallback: always gone by 4s
-  setTimeout(function() {
-    var s = document.getElementById('splash');
-    if (s) { s.classList.add('splash-gone'); }
-  }, 4000);
-})();
-</script>
 </head>
 <body>
 
 <div id="progress"></div>
+<canvas id="bg-canvas"></canvas>
 
+<!-- SPLASH -->
 <div id="splash">
-  <div class="splash-monogram">JC</div>
+  <div class="splash-mono">JC</div>
   <div class="splash-bar-wrap"><div class="splash-bar"></div></div>
   <p class="splash-text">Loading portfolio</p>
 </div>
@@ -119,45 +60,36 @@
   </ul>
 </nav>
 
-<!-- HERO -->
-<section id="hero" style="padding-top:8rem; max-width:1100px; margin:0 auto;">
+<section id="hero">
   <div class="hero-content">
     <div class="hero-tag">Available for Opportunities</div>
-    <h1 class="hero-name">Jai<br><span>Chadha</span></h1>
-    <p class="hero-role">CS Engineering Student · Full Stack & AI/ML · CyberSecurity</p>
+
+    <h1 class="hero-name">
+      Jai<br><span>Chadha</span>
+    </h1>
+
+    <p class="hero-role">
+      CS Engineering Student · Full Stack & AI/ML · CyberSecurity
+    </p>
+
     <p class="hero-summary">
       Computer Science Engineering student at Manipal University Jaipur (IoT & Intelligent Systems), CGPA 8.95. Passionate about full stack development, CyberSecurity, operating systems, and AI/ML — building secure and practical solutions.
     </p>
+
     <div class="hero-ctas">
-      <a href="#experience" class="btn-primary">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        View Experience
-      </a>
-      <a href="#resume-download" class="btn-secondary">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-        Download Resume
-      </a>
+      <a href="#experience" class="btn-primary">View Experience</a>
+      <a href="#resume-download" class="btn-secondary">Download Resume</a>
     </div>
+
     <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-num">8.95</div>
-        <div class="stat-label">CGPA</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">4+</div>
-        <div class="stat-label">Projects Built</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">2</div>
-        <div class="stat-label">Publications</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">5+</div>
-        <div class="stat-label">Certifications</div>
-      </div>
+      <div><div class="stat-num">8.95</div><div class="stat-label">CGPA</div></div>
+      <div><div class="stat-num">4+</div><div class="stat-label">Projects</div></div>
+      <div><div class="stat-num">2</div><div class="stat-label">Publications</div></div>
+      <div><div class="stat-num">5+</div><div class="stat-label">Certifications</div></div>
     </div>
   </div>
 </section>
+
 
 <div class="divider"></div>
 
@@ -538,9 +470,9 @@
     Currently based in Ghaziabad, Uttar Pradesh, India. Open to internships, collaborations, and new opportunities.
   </p>
   <div class="contact-links reveal">
-    <a href="/cdn-cgi/l/email-protection#2248434b414a43464a43121662454f434b4e0c414d4f" class="contact-link">
+    <a href="mailto:jaichadha04@gmail.com" class="contact-link">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-      <span class="__cf_email__" data-cfemail="b1dbd0d8d2d9d0d5d9d08185f1d6dcd0d8dd9fd2dedc">[email&#160;protected]</span>
+      jaichadha04@gmail.com
     </a>
     <a href="https://www.linkedin.com/in/jai-chadha-870407273/" target="_blank" rel="noopener" class="contact-link">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
@@ -572,6 +504,7 @@
 <footer>
   <p>© <span id="footer-year"></span> Jai Chadha · Built with ❤️ · Ghaziabad, India</p>
 </footer>
-<script src="script.js"></script>
+
+<script src="script.js" defer></script>
 </body>
 </html>
