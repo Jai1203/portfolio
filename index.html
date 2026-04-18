@@ -1,510 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jai Chadha — Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jai Chadha Portfolio</title>
+<meta name="description" content="Jai Chadha — B.Tech CSE (IoT & Intelligent Systems), ML Engineer, Researcher. CGPA 8.95, IBM Intern, IEEE Publications." />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div id="progress"></div>
-<canvas id="bg-canvas"></canvas>
-
-<!-- SPLASH -->
-<div id="splash">
-  <div class="splash-mono">JC</div>
-  <div class="splash-bar-wrap"><div class="splash-bar"></div></div>
-  <p class="splash-text">Loading portfolio</p>
-</div>
-
-<!-- NAV -->
+<!-- ── NAV ── -->
 <nav>
-  <div class="nav-logo">Jai Chadha</div>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
+  <div class="nav-logo">JC</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#publications">Publications</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#papers">Research</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <div class="nav-right">
-    <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☀</button>
-    <button class="nav-burger" id="burger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
 </nav>
 
-<!-- SCROLL SPY -->
-<div id="scroll-spy">
-  <button class="spy-dot active" data-target="hero" title="Home"></button>
-  <button class="spy-dot" data-target="experience" title="Experience"></button>
-  <button class="spy-dot" data-target="projects" title="Projects"></button>
-  <button class="spy-dot" data-target="skills" title="Skills"></button>
-  <button class="spy-dot" data-target="education" title="Education"></button>
-  <button class="spy-dot" data-target="publications" title="Publications"></button>
-  <button class="spy-dot" data-target="contact" title="Contact"></button>
-</div>
-
-<!-- BOTTOM NAV (mobile) -->
-<nav id="bottom-nav">
-  <ul class="bottom-nav-items">
-    <li><a href="#hero"><span class="bottom-nav-icon">🏠</span>Home</a></li>
-    <li><a href="#experience"><span class="bottom-nav-icon">💼</span>Work</a></li>
-    <li><a href="#projects"><span class="bottom-nav-icon">🚀</span>Projects</a></li>
-    <li><a href="#skills"><span class="bottom-nav-icon">⚡</span>Skills</a></li>
-    <li><a href="#contact"><span class="bottom-nav-icon">✉️</span>Contact</a></li>
-  </ul>
-</nav>
-
+<!-- ── HERO ── -->
 <section id="hero">
-  <div class="hero-content">
-    <div class="hero-tag">Available for Opportunities</div>
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
 
-    <h1 class="hero-name">
-      Jai<br><span>Chadha</span>
-    </h1>
+  <div class="hero-inner">
+    <!-- Left: Text -->
+    <div class="hero-content">
+      <div class="hero-tag">CS Engineering Student · Full Stack &amp; AI/ML · Cybersecurity</div>
+      <h1 class="hero-name">Jai<br/><span>Chadha</span></h1>
+      <p class="hero-role">
+        B.Tech CSE (IoT &amp; Intelligent Systems) · Manipal University Jaipur<br/>
+        Building at the intersection of machine learning, healthcare, and connected systems.<br/>
+        CGPA 8.95 &nbsp;·&nbsp; Dean's List (2×) &nbsp;·&nbsp; Student Excellence Award (2×)
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Get in touch</a>
+      </div>
 
-    <p class="hero-role">
-      CS Engineering Student · Full Stack & AI/ML · CyberSecurity
-    </p>
-
-    <p class="hero-summary">
-      Computer Science Engineering student at Manipal University Jaipur (IoT & Intelligent Systems), CGPA 8.95. Passionate about full stack development, CyberSecurity, operating systems, and AI/ML — building secure and practical solutions.
-    </p>
-
-    <div class="hero-ctas">
-      <a href="#experience" class="btn-primary">View Experience</a>
-      <a href="#resume-download" class="btn-secondary">Download Resume</a>
+      <div class="ticker-wrap">
+        <div class="ticker" id="ticker"></div>
+      </div>
     </div>
 
-    <div class="hero-stats">
-      <div><div class="stat-num">8.95</div><div class="stat-label">CGPA</div></div>
-      <div><div class="stat-num">4+</div><div class="stat-label">Projects</div></div>
-      <div><div class="stat-num">2</div><div class="stat-label">Publications</div></div>
-      <div><div class="stat-num">5+</div><div class="stat-label">Certifications</div></div>
+    <!-- Right: 3D Photo Carousel -->
+    <div class="photo-carousel-wrap">
+      <div class="carousel-3d">
+        <div class="carousel-3d-inner" id="carouselInner"></div>
+      </div>
+      <div class="carousel-dots" id="carouselDots"></div>
     </div>
   </div>
 </section>
 
-
-<div class="divider"></div>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <p class="section-label reveal">Work Experience</p>
-  <h2 class="section-title reveal">Where I've<br>Made Impact</h2>
-
-  <div class="impact-strip reveal">
-    <div class="impact-item">
-      <span class="impact-num">1000+</span>
-      <span class="impact-desc">Employee records processed in ML pipeline</span>
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="section-label">01 · Background</div>
+  <h2 class="section-title">About <span>Me</span></h2>
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <p>
+        I'm a final-year CSE student at Manipal University Jaipur, specialising in <strong>IoT &amp; Intelligent Systems</strong>. My work sits at the boundary between classical ML, deep learning, and real-world deployment — with a focus on healthcare AI and cybersecurity.
+      </p>
+      <p>
+        At <strong>IBM SkillsBuild</strong> (2025), I built an end-to-end Employee Salary Prediction ML pipeline, achieving R² of 0.85+ with Random Forest — a 23% improvement over baseline. I'm also an active researcher with two published papers (IJERT, IJRPR) and two more under IEEE conference review.
+      </p>
+      <p>
+        Outside research, I build full-stack systems from scratch under pressure — shipped a complete AI chatbot (FastAPI + React + LLaMA 3.1) in 72 hours for a competitive hiring challenge with zero prior experience in the stack.
+      </p>
     </div>
-    <div class="impact-item">
-      <span class="impact-num">0.85+</span>
-      <span class="impact-desc">R² score achieved with Random Forest model</span>
-    </div>
-    <div class="impact-item">
-      <span class="impact-num">&lt;1e7</span>
-      <span class="impact-desc">MSE achieved, outperforming Linear Regression</span>
-    </div>
-  </div>
-
-  <div class="exp-card reveal open" id="exp-ibm" onclick="toggleExp(this)">
-    <div class="exp-header">
-      <div class="exp-icon">AI</div>
-      <div class="exp-meta">
-        <div class="exp-role">Artificial Intelligence Intern</div>
-        <div class="exp-company">IBM SkillsBuild — Edunet Foundation / AICTE</div>
-        <div class="exp-dates">June 2025 – July 2025 · 2 months · India</div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-num">8.95</div>
+        <div class="stat-label">CGPA · MUJ</div>
       </div>
-      <div class="exp-toggle">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      <div class="stat-card">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Research Papers</div>
       </div>
-    </div>
-    <div class="exp-body">
-      <ul class="exp-bullets">
-        <li>
-          Developed an Employee Salary Prediction system using Random Forest and Linear Regression on
-          <span class="metric-chip">1000+ records</span>, performing data preprocessing, feature engineering, and model training.
-        </li>
-        <li>
-          Achieved an <span class="metric-chip">R² score 0.85+</span> with Random Forest (outperforming Linear Regression) and reduced prediction error with <span class="metric-chip">MSE &lt; 1e7</span>, evaluated using Scikit-learn in an end-to-end ML pipeline.
-        </li>
-      </ul>
+      <div class="stat-card">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Shipped Projects</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">IBM</div>
+        <div class="stat-label">AI/ML Intern · 2025</div>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <p class="section-label reveal">Projects</p>
-  <h2 class="section-title reveal">Things I've<br>Built</h2>
-  <div class="projects-grid">
-
-    <!-- CHATBOT PROJECT -->
-    <div class="project-card reveal">
-      <div class="project-num">01</div>
-      <div class="project-name">AI Chatbot</div>
-      <div class="project-stack">
-        <span class="stack-tag">FastAPI</span>
-        <span class="stack-tag">React</span>
-        <span class="stack-tag">SQLite</span>
-        <span class="stack-tag">LLaMA 3.1</span>
-        <span class="stack-tag">Groq</span>
-        <span class="stack-tag">Render</span>
-        <span class="stack-tag">Vercel</span>
-      </div>
-      <ul class="project-bullets">
-        <li>Full-stack AI chatbot with FastAPI backend, React frontend, and SQLite database, powered by Groq-hosted LLaMA 3.1 model.</li>
-        <li>Deployed backend on Render and frontend on Vercel; full source available on GitHub.</li>
-      </ul>
-      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-        <a href="https://github.com/Jai1203/chatbot-project" target="_blank" rel="noopener" class="project-link">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-          GitHub
-        </a>
-        <span class="metric-chip" style="font-size:0.75rem;">LLM · Full Stack</span>
-      </div>
-    </div>
-
-    <div class="project-card reveal">
-      <div class="project-num">02</div>
-      <div class="project-name">GameXP</div>
-      <div class="project-stack">
-        <span class="stack-tag">HTML</span>
-        <span class="stack-tag">CSS</span>
-        <span class="stack-tag">JavaScript</span>
-        <span class="stack-tag">LocalStorage</span>
-      </div>
-      <ul class="project-bullets">
-        <li>Gamified web platform with 5+ interactive games, XP system, leaderboard, badges, and reward redemption.</li>
-        <li>Implemented persistent state management using LocalStorage; designed a responsive UI simulating real-world customer engagement systems.</li>
-      </ul>
-      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-        <a href="https://github.com/Jai1203/GameXP" target="_blank" rel="noopener" class="project-link">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-          GitHub
-        </a>
-        <span class="metric-chip" style="font-size:0.75rem;">Gamified Loyalty Platform</span>
-      </div>
-    </div>
-
-    <div class="project-card reveal">
-      <div class="project-num">03</div>
-      <div class="project-name">PicturesQue</div>
-      <div class="project-stack">
-        <span class="stack-tag">FastAPI</span>
-        <span class="stack-tag">Python</span>
-        <span class="stack-tag">Next.js</span>
-        <span class="stack-tag">TypeScript</span>
-        <span class="stack-tag">Tailwind</span>
-        <span class="stack-tag">Scikit-learn</span>
-      </div>
-      <ul class="project-bullets">
-        <li>Full-stack AI movie recommendation system generating personalized suggestions using cosine similarity (Scikit-learn) with TMDB API integration.</li>
-        <li>Built a "Wrapped" analytics dashboard with Recharts, enabling shareable and downloadable user insights.</li>
-      </ul>
-      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-        <a href="https://github.com/Jai1203/picturesque-ai-recommender" target="_blank" rel="noopener" class="project-link">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-          GitHub
-        </a>
-        <span class="metric-chip" style="font-size:0.75rem;">AI Recommendation</span>
-      </div>
-    </div>
-
-    <div class="project-card reveal">
-      <div class="project-num">04</div>
-      <div class="project-name">Car Parking Management System</div>
-      <div class="project-stack">
-        <span class="stack-tag">HTML</span>
-        <span class="stack-tag">CSS</span>
-        <span class="stack-tag">JavaScript</span>
-        <span class="stack-tag">CSV/SQL</span>
-      </div>
-      <ul class="project-bullets">
-        <li>Parking management system implementing slot allocation, vehicle tracking, and automated fee calculation.</li>
-        <li>Managed structured data using CSV dataset with SQL-like operations; responsive interface for real-time parking availability.</li>
-      </ul>
-      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-        <a href="https://github.com/Jai1203/Car-Parking-Management-System" target="_blank" rel="noopener" class="project-link">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-          GitHub
-        </a>
-        <span class="metric-chip" style="font-size:0.75rem;">IoT-enabled</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- PHOTO CAROUSEL -->
-<section id="gallery" style="padding:4rem 2rem; max-width:1100px; margin:0 auto;">
-  <p class="section-label reveal" style="text-align:center;">Gallery</p>
-  <h2 class="section-title reveal" style="text-align:center;">The Person<br>Behind the Code</h2>
-  <div class="photo-scene reveal">
-    <div class="photo-carousel" id="photo-carousel">
-      <div class="photo-card active" style="--i:0">
-        <img src="photo2.jpg" alt="Jai Chadha" loading="eager">
-      </div>
-      <div class="photo-card" style="--i:1">
-        <img src="photo3.jpg" alt="Jai Chadha" loading="eager">
-      </div>
-      <div class="photo-card" style="--i:2">
-        <img src="photo4.jpg" alt="Jai Chadha" loading="eager">
-      </div>
-      <div class="photo-card" style="--i:3">
-        <img src="photo5.jpg" alt="Jai Chadha" loading="eager">
-      </div>
-      <div class="photo-card" style="--i:4">
-        <img src="photo1.jpg" alt="Jai Chadha" loading="eager">
-      </div>
-    </div>
-    <div class="photo-dots" id="photo-dots">
-      <button class="photo-dot active" data-idx="0"></button>
-      <button class="photo-dot" data-idx="1"></button>
-      <button class="photo-dot" data-idx="2"></button>
-      <button class="photo-dot" data-idx="3"></button>
-      <button class="photo-dot" data-idx="4"></button>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ACHIEVEMENTS -->
-<section id="achievements">
-  <p class="section-label reveal">Achievements</p>
-  <h2 class="section-title reveal">By the Numbers</h2>
-  <div class="achievements-grid">
-    <div class="achievement-card reveal">
-      <span class="achievement-icon">🎓</span>
-      <span class="achievement-val">8.95</span>
-      <span class="achievement-label">CGPA at Manipal University Jaipur</span>
-    </div>
-    <div class="achievement-card reveal">
-      <span class="achievement-icon">🚀</span>
-      <span class="achievement-val">4+</span>
-      <span class="achievement-label">Projects built across full stack & AI/ML</span>
-    </div>
-    <div class="achievement-card reveal">
-      <span class="achievement-icon">📘</span>
-      <span class="achievement-val">91%</span>
-      <span class="achievement-label">Class 10th — Father Agnel School, Noida</span>
-    </div>
-    <div class="achievement-card reveal">
-      <span class="achievement-icon">📗</span>
-      <span class="achievement-val">86.8%</span>
-      <span class="achievement-label">Class 12th — Delhi Public School GZB</span>
-    </div>
-    <div class="achievement-card reveal achievement-card--gold">
-      <span class="achievement-icon">🏅</span>
-      <span class="achievement-val">×2</span>
-      <span class="achievement-label">Dean's List — Manipal University Jaipur</span>
-    </div>
-    <div class="achievement-card reveal achievement-card--gold">
-      <span class="achievement-icon">🏆</span>
-      <span class="achievement-val">×2</span>
-      <span class="achievement-label">Student Excellence Award — MUJ</span>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- SKILLS -->
+<!-- ── SKILLS ── -->
 <section id="skills">
-  <p class="section-label reveal">Technical Skills</p>
-  <h2 class="section-title reveal">What I<br>Work With</h2>
-  <div class="skills-wrap">
-    <div class="skill-group reveal">
-      <div class="skill-group-title">Languages</div>
-      <div class="skill-tags">
-        <span class="skill-tag">C</span>
-        <span class="skill-tag">Java</span>
-        <span class="skill-tag">HTML</span>
-        <span class="skill-tag">CSS</span>
-        <span class="skill-tag">JavaScript</span>
-        <span class="skill-tag">SQL</span>
-        <span class="skill-tag">Python</span>
-      </div>
-    </div>
-    <div class="skill-group reveal">
-      <div class="skill-group-title">Frameworks & Libraries</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Next.js</span>
-        <span class="skill-tag">FastAPI</span>
-        <span class="skill-tag">React</span>
-        <span class="skill-tag">Scikit-learn</span>
-        <span class="skill-tag">Pandas</span>
-        <span class="skill-tag">NumPy</span>
-      </div>
-    </div>
-    <div class="skill-group reveal">
-      <div class="skill-group-title">Technical Domains</div>
-      <div class="skill-tags">
-        <span class="skill-tag">AI/ML</span>
-        <span class="skill-tag">CyberSecurity</span>
-        <span class="skill-tag">Operating Systems</span>
-        <span class="skill-tag">IoT</span>
-        <span class="skill-tag">Problem Solving</span>
-      </div>
-    </div>
-    <div class="skill-group reveal">
-      <div class="skill-group-title">Leadership & Activities</div>
-      <div class="skill-tags">
-        <span class="skill-tag">MUN</span>
-        <span class="skill-tag">Public Speaking</span>
-        <span class="skill-tag">Debating</span>
-        <span class="skill-tag">Team Collaboration</span>
-        <span class="skill-tag">Cricket</span>
-        <span class="skill-tag">Gaming</span>
-      </div>
-    </div>
+  <div class="section-label">02 · Expertise</div>
+  <h2 class="section-title">Skills &amp; <span>Stack</span></h2>
+  <div class="skills-filter reveal">
+    <button class="filter-btn active" onclick="filterSkills('all',this)">All</button>
+    <button class="filter-btn" onclick="filterSkills('ml',this)">ML / DL</button>
+    <button class="filter-btn" onclick="filterSkills('web',this)">Web</button>
+    <button class="filter-btn" onclick="filterSkills('tools',this)">Languages &amp; Tools</button>
   </div>
+  <div class="skills-grid reveal" id="skills-grid"></div>
 </section>
 
-<div class="divider"></div>
-
-<!-- EDUCATION -->
-<section id="education">
-  <p class="section-label reveal">Education</p>
-  <h2 class="section-title reveal">Academic<br>Background</h2>
-  <div class="edu-timeline">
-    <div class="edu-item reveal">
-      <div class="edu-year">2023–2027</div>
-      <div class="edu-content">
-        <div class="edu-degree">B.Tech — Computer Science (IoT & Intelligent Systems)</div>
-        <div class="edu-school">Manipal University Jaipur</div>
-        <div class="edu-score">CGPA: 8.95</div>
-      </div>
-    </div>
-    <div class="edu-item reveal">
-      <div class="edu-year">2022</div>
-      <div class="edu-content">
-        <div class="edu-degree">Class 12th — CBSE</div>
-        <div class="edu-school">Delhi Public School Ghaziabad Vasundhara</div>
-        <div class="edu-score">86.8%</div>
-      </div>
-    </div>
-    <div class="edu-item reveal">
-      <div class="edu-year">2020</div>
-      <div class="edu-content">
-        <div class="edu-degree">Class 10th — CBSE</div>
-        <div class="edu-school">Father Agnel School, Noida</div>
-        <div class="edu-score">91%</div>
-      </div>
-    </div>
-  </div>
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <div class="section-label">03 · Work</div>
+  <h2 class="section-title">Featured <span>Projects</span></h2>
+  <div class="projects-grid reveal" id="projects-grid"></div>
 </section>
 
-<div class="divider"></div>
+<!-- ── EXPERIENCE ── -->
+<section id="experience">
+  <div class="section-label">04 · Journey</div>
+  <h2 class="section-title">Experience &amp; <span>Achievements</span></h2>
+  <div class="reveal">
 
-<!-- PUBLICATIONS -->
-<section id="publications">
-  <p class="section-label reveal">Research</p>
-  <h2 class="section-title reveal">Publications</h2>
-  <div class="pub-list">
-    <div class="pub-item reveal">
-      <div class="pub-num">1</div>
+    <div class="exp-item">
       <div>
-        <div class="pub-title">A Comparative Analysis of Decision Tree, K-Nearest Neighbors, and Naive Bayes Algorithms for Classification Tasks</div>
-        <div class="pub-journal">IJERT, 2025</div>
+        <div class="exp-date">Jun – Jul 2025</div>
+        <div class="exp-company">IBM SkillsBuild · Edunet Foundation / AICTE</div>
       </div>
-    </div>
-    <div class="pub-item reveal">
-      <div class="pub-num">2</div>
       <div>
-        <div class="pub-title">Privacy Paradox: Data Security in IoT-Driven Telemedicine</div>
-        <div class="pub-journal">IJRPR, 2025</div>
+        <div class="exp-title">AI/ML Intern</div>
+        <ul class="exp-desc">
+          <li>Built an end-to-end Employee Salary Prediction ML pipeline on 1,000+ records — feature engineering, preprocessing, and cross-validation across Random Forest and Linear Regression.</li>
+          <li>Achieved R² of 0.85+ with Random Forest, reducing prediction error (MSE &lt; 1e7) — a 23% improvement over baseline Linear Regression.</li>
+          <li>Deployed production-ready pipeline using Scikit-learn; aligned output with IBM industry skill standards.</li>
+        </ul>
+        <span class="exp-metric">R² 0.85+ · MSE &lt;1e7 · 23% improvement</span>
       </div>
     </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">Jan 2025 – Present</div>
+        <div class="exp-company">Manipal University Jaipur</div>
+      </div>
+      <div>
+        <div class="exp-title">Undergraduate Researcher</div>
+        <ul class="exp-desc">
+          <li>Co-authored 2 published papers (IJERT, IJRPR) and 2 more under IEEE conference review on ML healthcare classification and IoT/telemedicine security.</li>
+          <li>Developed hybrid ML/DL breast cancer detection framework combining SVM + Random Forest (Wisconsin dataset) with ResNet50 on IDC histopathology images.</li>
+          <li>Achieved &gt;95% classification accuracy on Wisconsin dataset and &gt;80% on IDC histopathology images.</li>
+        </ul>
+        <span class="exp-metric">&gt;95% accuracy · 4 papers · IEEE review</span>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">2023 – 2027</div>
+        <div class="exp-company">Manipal University Jaipur</div>
+      </div>
+      <div>
+        <div class="exp-title">B.Tech CSE · IoT &amp; Intelligent Systems</div>
+        <ul class="exp-desc">
+          <li>Dean's List recognition — 2 consecutive times for academic excellence.</li>
+          <li>Student Excellence Award — 2 times for research and technical contributions.</li>
+          <li>MUN delegate and debate speaker across 3+ tournaments winning Best delegte, Runner's Up, Special Mention and Verbal Mention</li>
+          <li>Coursework: AI/ML, Data Structures, IoT Security, Deep Learning, Operating Systems, Computer Networks.</li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<div class="divider"></div>
+<!-- ── PUBLICATIONS ── -->
+<section id="papers">
+  <div class="section-label">05 · Research</div>
+  <h2 class="section-title">Publications &amp; <span>Papers</span></h2>
+  <div class="papers-list reveal">
 
-<!-- CERTIFICATIONS -->
-<section id="certifications">
-  <p class="section-label reveal">Credentials</p>
-  <h2 class="section-title reveal">Certifications</h2>
-  <div class="cert-grid">
-    <div class="cert-item reveal">
-      <div class="cert-icon">🔒</div>
-      <div class="cert-name">Tata — Cybersecurity Analyst Job Simulation</div>
+    <div class="paper-item">
+      <div>
+        <div class="paper-title">A Comparative Analysis of Decision Tree, KNN, and Naive Bayes for Classification Tasks</div>
+        <div class="paper-meta">IJERT · 2025 · Manipal University Jaipur</div>
+      </div>
+      <div class="paper-badge badge-green">Published</div>
     </div>
-    <div class="cert-item reveal">
-      <div class="cert-icon">☁️</div>
-      <div class="cert-name">Google Cloud Fundamentals: Core Infrastructure</div>
+
+    <div class="paper-item">
+      <div>
+        <div class="paper-title">Privacy Paradox: Data Security in IoT-Driven Telemedicine</div>
+        <div class="paper-meta">IJRPR · 2025 · Co-authored with Rudransh Singh · Manipal University Jaipur</div>
+      </div>
+      <div class="paper-badge badge-green">Published</div>
     </div>
-    <div class="cert-item reveal">
-      <div class="cert-icon">🧠</div>
-      <div class="cert-name">Advanced Learning Algorithms</div>
+
+    <div class="paper-item">
+      <div>
+        <div class="paper-title">Hybrid ML/DL Framework for Breast Cancer Detection</div>
+        <div class="paper-meta">IEEE Conference · Wisconsin Diagnostic Dataset · IDC Histopathology · ResNet50 + Classical Classifiers</div>
+      </div>
+      <div class="paper-badge badge-blue">IEEE Review</div>
     </div>
-    <div class="cert-item reveal">
-      <div class="cert-icon">☕</div>
-      <div class="cert-name">Java Programming: Arrays, Lists, and Structured Data</div>
+
+    <div class="paper-item">
+      <div>
+        <div class="paper-title">Data Privacy in IoMT and Telemedicine Systems</div>
+        <div class="paper-meta">IEEE Track · Co-authored with Rudransh Singh · Manipal University Jaipur</div>
+      </div>
+      <div class="paper-badge badge-blue">IEEE Review</div>
     </div>
-    <div class="cert-item reveal">
-      <div class="cert-icon">⚡</div>
-      <div class="cert-name">Digital Systems: From Logic Gates to Processors</div>
+
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="contact-inner reveal">
+    <div class="section-label" style="justify-content:center">06 · Let's connect</div>
+    <div class="contact-heading">Got an idea?<br/><span>Let's build it.</span></div>
+    <p class="contact-sub">
+      Open to full-time roles, research collaborations, and interesting side projects.<br/>
+      Based in Ghaziabad, UP, India — available remotely.<br/>
+      <span style="color:var(--text)">+91 9818662811</span>
+    </p>
+    <div class="contact-links">
+      <a href="mailto:jaichadha04@gmail.com" class="btn btn-primary">Send Email ↗</a>
+      <a href="https://www.linkedin.com/in/jai-chadha-870407273" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+      <a href="https://github.com/Jai1203" target="_blank" class="btn btn-outline">GitHub ↗</a>
+      <button onclick="downloadCV()" class="btn btn-outline">Resume ↓</button>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- CONTACT -->
-<section id="contact" style="text-align:center;">
-  <p class="section-label reveal" style="text-align:center;">Get In Touch</p>
-  <h2 class="section-title reveal" style="text-align:center;">Let's Build<br>Something</h2>
-  <p class="reveal" style="color:var(--text2);max-width:480px;margin:0 auto 2rem;text-align:center;">
-    Currently based in Ghaziabad, Uttar Pradesh, India. Open to internships, collaborations, and new opportunities.
-  </p>
-  <div class="contact-links reveal">
-    <a href="mailto:jaichadha04@gmail.com" class="contact-link">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-      jaichadha04@gmail.com
-    </a>
-    <a href="https://www.linkedin.com/in/jai-chadha-870407273/" target="_blank" rel="noopener" class="contact-link">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-      LinkedIn
-    </a>
-    <a href="https://github.com/Jai1203" target="_blank" rel="noopener" class="contact-link">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-      GitHub
-    </a>
-  </div>
-</section>
-
-<!-- RESUME DOWNLOAD -->
-<section id="resume-download" style="padding:2rem;">
-  <div style="background:var(--surface);border:1px solid var(--border2);border-radius:var(--r2);padding:2.5rem 2rem;max-width:600px;margin:0 auto;text-align:center;" class="reveal">
-    <p style="color:var(--text3);font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;">Resume</p>
-    <h3 style="font-family:'Syne',sans-serif;font-size:1.4rem;margin-bottom:0.75rem;">Download Full Resume</h3>
-    <p style="color:var(--accent2);font-size:0.9rem;margin-bottom:1.5rem;">B.Tech CSE (IoT) · Manipal University Jaipur · CGPA 8.95</p>
-    <a href="Jai_Chadha_CV_April_2026.pdf" download="Jai_Chadha_Resume.pdf" class="btn-primary" style="border:none;text-decoration:none;">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-  Download Resume
-</a>
-<p style="margin-top:0.75rem;font-size:0.78rem;color:var(--text3);">
-  Or <a href="Jai_Chadha_CV_April_2026.pdf" target="_blank" style="color:var(--accent2);text-decoration:underline;">open in browser</a>
-</p>
-  </div>
-</section>
-
+<!-- ── FOOTER ── -->
 <footer>
-  <p>© <span id="footer-year"></span> Jai Chadha · Built with ❤️ · Ghaziabad, India</p>
+  <p>© 2026 Jai Chadha. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="mailto:jaichadha04@gmail.com">Email</a>
+    <a href="https://github.com/Jai1203" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/jai-chadha-870407273" target="_blank">LinkedIn</a>
+  </div>
 </footer>
 
-<script src="script.js" defer></script>
+<script src="script.js"></script>
 </body>
 </html>
