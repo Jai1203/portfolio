@@ -354,13 +354,14 @@ h2.section-title span { color: var(--accent); }
 
 /* ── FOOTER ── */
 footer {
-  border-top: 1px solid var(--border); padding: 24px 80px;
-  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid var(--border); padding: 40px 80px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
   background: var(--bg2);
+  text-align: center;
 }
-footer p { font-size: 11px; color: var(--muted); }
-.footer-links { display: flex; gap: 22px; }
-.footer-links a { font-size: 11px; color: var(--muted); text-decoration: none; transition: color .2s; }
+footer p { font-size: 14px; color: var(--muted); }
+.footer-links { display: flex; gap: 22px; justify-content: center; }
+.footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color .2s; }
 .footer-links a:hover { color: var(--accent); }
 
 /* ── ANIMATIONS ── */
