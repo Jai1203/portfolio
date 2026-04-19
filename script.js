@@ -43,7 +43,7 @@ const SKILLS = [
 const PROJECTS = [
   {
     num:'01', title:'Full-Stack AI Chatbot',
-    desc:'Production-ready AI chatbot built for a technical hiring challenge — FastAPI backend, React frontend, LLaMA 3.1 via Groq, SQLite for multi-session history, JWT auth. Deployed end-to-end on Render + Vercel with sub-500ms latency. Delivered in 72 hours from zero experience with the stack.',
+    desc:'Production ready AI chatbot built for a technical hiring challenge with FastAPI backend, React frontend, LLaMA 3.1 via Groq, SQLite for multi-session history, JWT auth. Deployed end-to-end on Render + Vercel with sub-500ms latency. Delivered in 72 hours from zero experience with the stack.',
     tags:['FastAPI','React','LLaMA 3.1','Groq','SQLite','JWT'],
     github:'https://github.com/Jai1203/chatbot-project',
   },
@@ -67,13 +67,13 @@ const PROJECTS = [
   },
   {
     num:'05', title:'Car Parking Management System',
-    desc:'Parking management system with slot allocation, vehicle tracking for 10+ concurrent slots, and automated fee calculation. Structured data management via CSV with SQL-like operations and real-time slot availability.',
+    desc:'Parking management system with slot allocation, vehicle tracking for 10+ concurrent slots, and automated fee calculation. Structured data management via CSV with SQL like operations and real-time slot availability.',
     tags:['Python','CSV','Data Structures','Algorithms'],
     github:'https://github.com/Jai1203/Car-Parking-Management-System',
   },
   {
     num:'06', title:'IoMT Privacy Analysis',
-    desc:'Co-authored IEEE-track paper analysing data privacy vulnerabilities in IoMT and telemedicine architectures. Covers GDPR compliance, MQTT/CoAP threat vectors, and SHA-256 chain-of-custody in smart healthcare. Published in IJRPR 2025.',
+    desc:'Co-authored IEEE-track paper analysing data privacy vulnerabilities in IoMT and telemedicine architectures. Covers GDPR compliance, MQTT/CoAP threat vectors, and SHA-256 chain of custody in smart healthcare. Published in IJRPR 2025.',
     tags:['MQTT','CoAP','GDPR','IoT Security','IEEE'],
     github: null,
   },
